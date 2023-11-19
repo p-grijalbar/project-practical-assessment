@@ -28,7 +28,7 @@ export class AirportController {
   }
 
   @Post()
-  async create(airportDto: AirportDto): Promise<AirportEntity> {
+  async create(@Body() airportDto: AirportDto): Promise<AirportEntity> {
     const airport: AirportEntity = plainToInstance(AirportEntity, airportDto);
     return await this.airportService.create(airport);
   }

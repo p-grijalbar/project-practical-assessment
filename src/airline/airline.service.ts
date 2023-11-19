@@ -12,7 +12,7 @@ export class AirlineService {
   ) {}
 
   async findAll(): Promise<AirlineEntity[]> {
-    return await this.airlineRepository.find();
+    return await this.airlineRepository.find({ relations: ['airports'] });
   }
 
   async findOne(id: string): Promise<AirlineEntity> {
@@ -30,7 +30,7 @@ export class AirlineService {
   }
 
   async create(airline: AirlineEntity): Promise<AirlineEntity> {
-    if (airline.foundationDate > new Date())
+    if (new Date(airline.foundationDate) > new Date())
       throw new BusinessException(
         `La fecha de fundación no puede ser mayor a la fecha actual`,
         HttpStatus.PRECONDITION_FAILED,
