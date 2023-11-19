@@ -31,6 +31,11 @@
 ```bash
 $ npm install
 ```
+## Running database
+
+```bash
+$ docker compose up
+```
 
 ## Running the app
 
